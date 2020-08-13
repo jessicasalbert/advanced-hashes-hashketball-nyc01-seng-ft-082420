@@ -236,7 +236,7 @@ def winning_team
   most[1]
 end
 
-def player_with_longest_name
+def long_name_steals_a_ton?
   longest = [0]
   game_hash.each do |key, value|
     value[:players].each do |player|
