@@ -246,5 +246,14 @@ def player_with_longest_name
       end
     end
   end
-  longest[1]
+  steals = [0]
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      if player[:steals] > steals[0]
+        steals[0] = player[:steals]
+        steals[1] = player[:player_name]
+      end
+    end
+  end
+  longest[1] == steals[1]
 end
