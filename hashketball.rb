@@ -215,3 +215,23 @@ def most_points_scored
   end
   points[1]
 end
+
+def winning_team
+  points = {}
+  game_hash.each do |key, value|
+    if !points[value[:team_name]]
+      points[value[:team_name]] = 0
+    end
+    value[:players].each do |player|
+      points[value[:team_name]] += player[:points]
+    end
+  end
+  most = [0]
+  points.each do |team, scores|
+    if points[team] > most[0]
+      most[0] = points[team]
+      most[1] = team
+    end
+  end
+  most[1]
+end
